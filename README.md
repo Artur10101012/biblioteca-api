@@ -120,7 +120,9 @@ python manage.py migrate
   "email": "arturoaquino@gmail.com",
   "password": "123456789"
 }
+
 ```
+![image](https://github.com/user-attachments/assets/8d7079f6-9418-448a-8c80-1d5bf409f92f)
 
 ---
 
@@ -135,6 +137,9 @@ python manage.py migrate
   "password": "123456789"
 }
 ```
+
+![image](https://github.com/user-attachments/assets/e7bb5d6d-4b02-41e4-bb10-cd01ae47c51d)
+
 
 ✅ Obtendrás tokens JWT. Usá el **access token** para autenticación en endpoints protegidos:
 
@@ -152,9 +157,12 @@ Body:
 
 ```json
 {
-  "nombre": "Realismo mágico"
+  "nombre": "Aventura"
 }
 ```
+
+![image](https://github.com/user-attachments/assets/c67a4134-b768-4257-b4c0-ca521d9f13ca)
+
 
 ---
 
@@ -170,6 +178,7 @@ Body:
   "nacionalidad": "Colombiana"
 }
 ```
+![image](https://github.com/user-attachments/assets/bd50854e-7b35-41e4-87bd-313676dff3f1)
 
 ---
 
@@ -189,6 +198,8 @@ Body:
   "url": "http://ejemplo.com/libro"
 }
 ```
+![image](https://github.com/user-attachments/assets/9663c16a-f65a-4d15-a3df-821ac1532998)
+
 
 ---
 
@@ -198,36 +209,8 @@ Body:
 
 ---
 
-### Obtener libro por ID
+![image](https://github.com/user-attachments/assets/dccd90d3-3a48-4266-9571-69f52afef575)
 
-- Endpoint: `GET /api/libros/1/`
-
----
-
-### Actualizar libro
-
-- Endpoint: `PUT /api/libros/1/`
-
-Body:
-
-```json
-{
-  "titulo": "Libro actualizado",
-  "autor": 1,
-  "genero": 1,
-  "fecha_publicacion": "2025-02-02",
-  "isbn": "22222",
-  "url": "http://post2.com"
-}
-```
-
----
-
-### Eliminar libro
-
-- Endpoint: `DELETE /api/libros/1/`
-
----
 
 ## 📈 Generación de Reportes
 
