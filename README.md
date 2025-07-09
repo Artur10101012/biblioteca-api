@@ -1,28 +1,22 @@
 📚 Proyecto Sistema de Registro y Valoración de Libros
+```python
 Este proyecto es una aplicación desarrollada con Django y Python para gestionar el registro de libros, calificaciones y análisis de datos mediante visualizaciones gráficas. Incluye carga de datos, consultas, sugerencias de libros y generación de gráficos para análisis exploratorio.
+```
 
 ✅ Versiones de las herramientas
+```python
 Python: 3.10+
-
 Django: 4.2+
-
 PostgreSQL: 14+
-
 Pandas: 1.5+
-
 Matplotlib: 3.6+
-
 Seaborn: 0.12+
-
 Scikit-learn: 1.2+
-
 Virtualenv: 20+
+```
 
 ⚙️ Instalaciones y Configuración
 Creación del entorno virtual
-bash
-Copiar
-Editar
 # Crear entorno virtual
 python -m venv venv
 
@@ -32,22 +26,13 @@ venv\Scripts\activate
 # Activar entorno (Linux/macOS)
 source venv/bin/activate
 Instalación de Django y librerías
-bash
-Copiar
-Editar
 pip install django pandas matplotlib seaborn scikit-learn psycopg2-binary
 Crear proyecto Django
-bash
-Copiar
-Editar
 django-admin startproject libreria
 cd libreria
 python manage.py startapp libros
 Configura la base de datos PostgreSQL en settings.py:
 
-python
-Copiar
-Editar
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -68,27 +53,8 @@ El sistema permite:
 
 La arquitectura se basa en un modelo Django Book, vistas para manejo CRUD y scripts de análisis de datos en Python.
 
-✍️ Código de Registro
-Modelo Book
-python
-Copiar
-Editar
-from django.db import models
-
-class Book(models.Model):
-    title = models.CharField(max_length=255)
-    author = models.CharField(max_length=255)
-    genre = models.CharField(max_length=100)
-    year = models.IntegerField()
-    rating = models.FloatField()
-
-    def __str__(self):
-        return self.title
 ✅ Crear Autor
-Modelo Author
-python
-Copiar
-Editar
+```python
 from django.db import models
 
 class Author(models.Model):
@@ -96,30 +62,25 @@ class Author(models.Model):
 
     def __str__(self):
         return self.name
+```
 Vista para registrar autor
-python
-Copiar
-Editar
+```python
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 from .models import Author
 
-@csrf_exempt
 def add_author(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         author = Author.objects.create(name=data['name'])
         return JsonResponse({'message': 'Autor creado', 'id': author.id})
+```
 Ejemplo de petición Postman:
-
 ![image](https://github.com/user-attachments/assets/7ba07caa-2dc1-44bd-a1e2-07665aa1816c)
 
 ✅ Crear Género
-Modelo Genre
-python
-Copiar
-Editar
+```python
 from django.db import models
 
 class Genre(models.Model):
@@ -127,31 +88,25 @@ class Genre(models.Model):
 
     def __str__(self):
         return self.name
+```
 Vista para registrar género
-python
-Copiar
-Editar
+```python
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 from .models import Genre
 
-@csrf_exempt
 def add_genre(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         genre = Genre.objects.create(name=data['name'])
         return JsonResponse({'message': 'Género creado', 'id': genre.id})
+```
 Ejemplo de petición Postman:
-
 ![image](https://github.com/user-attachments/assets/f7b2e182-1cc1-4479-8856-838539921384)
 
-
 ✅ Registrar Libro
-Vista para registrar libro
-python
-Copiar
-Editar
+```python
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
@@ -169,30 +124,25 @@ def add_book(request):
             rating=data['rating']
         )
         return JsonResponse({'message': 'Libro creado', 'id': book.id})
+```
 Ejemplo Postman:
-
 ![image](https://github.com/user-attachments/assets/5932ba8c-1e60-4c55-8d70-33fdfc8e1266)
-
 
 ✅ Listado de Libros
 Endpoint para obtener listado
-python
-Copiar
-Editar
+```python
 from django.http import JsonResponse
 from .models import Book
 
 def list_books(request):
     books = Book.objects.all().values()
     return JsonResponse(list(books), safe=False)
-
+```
 ![image](https://github.com/user-attachments/assets/aef1ac14-2543-48af-a278-be56b27db4d7)
 
 ✅ Valorar Libro
 Vista para actualizar calificación
-python
-Copiar
-Editar
+```python
 from django.views.decorators.csrf import csrf_exempt
 import json
 from django.http import JsonResponse
@@ -206,16 +156,12 @@ def rate_book(request, book_id):
         book.rating = data['rating']
         book.save()
         return JsonResponse({'message': 'Calificación actualizada', 'rating': book.rating})
-
+```
 ![image](https://github.com/user-attachments/assets/644594f3-e433-4b4a-8529-e31002b63ee4)
 
-    
 📝 Documentación Script
 Para leer registros y generar análisis, se utiliza un script Python con Pandas. Ejemplo de lectura:
-
-python
-Copiar
-Editar
+```python
 import pandas as pd
 
 # Conexión a PostgreSQL
@@ -233,6 +179,7 @@ query = "SELECT * FROM libros_book;"
 df = pd.read_sql(query, conn)
 
 print(df.head())
+```
 📊 Generar y Explicar Gráficos
 Para visualizar los datos se crearon gráficos en Google Colab o Google Drive utilizando Python, Pandas, Seaborn y Matplotlib.
 
