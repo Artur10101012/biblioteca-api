@@ -1,294 +1,277 @@
-# 📚 API RESTful de Biblioteca
+📚 Proyecto Sistema de Registro y Valoración de Libros
+Este proyecto es una aplicación desarrollada con Django y Python para gestionar el registro de libros, calificaciones y análisis de datos mediante visualizaciones gráficas. Incluye carga de datos, consultas, sugerencias de libros y generación de gráficos para análisis exploratorio.
 
-¡Bienvenido a la API RESTful para gestión de una biblioteca!
+✅ Versiones de las herramientas
+Python: 3.10+
 
-Este proyecto está desarrollado en **Django 5.2.4** con **Django REST Framework** y utiliza **PostgreSQL** como base de datos.
+Django: 4.2+
 
-Permite gestionar libros, autores, géneros y calificaciones de usuarios, así como generar reportes visuales basados en los datos.
+PostgreSQL: 14+
 
----
+Pandas: 1.5+
 
-## 🔧 Requisitos y Tecnologías
+Matplotlib: 3.6+
 
-### Principales librerías usadas:
+Seaborn: 0.12+
 
-- Django 5.2.4
-- Django REST Framework
-- djangorestframework-simplejwt
-- psycopg2-binary
-- pandas
-- matplotlib
-- seaborn
+Scikit-learn: 1.2+
 
-Consulta el listado completo de versiones y licencias [aquí](#-licencias).
+Virtualenv: 20+
 
----
-
-## 🚀 Instalación
-
-### 1. Crear entorno virtual
-
-```bash
+⚙️ Instalaciones y Configuración
+Creación del entorno virtual
+bash
+Copiar
+Editar
+# Crear entorno virtual
 python -m venv venv
-```
 
-- Activar en Windows:
-  ```bash
-  venv\Scripts\activate
-  ```
-- Activar en Linux/macOS:
-  ```bash
-  source venv/bin/activate
-  ```
+# Activar entorno (Windows)
+venv\Scripts\activate
 
----
+# Activar entorno (Linux/macOS)
+source venv/bin/activate
+Instalación de Django y librerías
+bash
+Copiar
+Editar
+pip install django pandas matplotlib seaborn scikit-learn psycopg2-binary
+Crear proyecto Django
+bash
+Copiar
+Editar
+django-admin startproject libreria
+cd libreria
+python manage.py startapp libros
+Configura la base de datos PostgreSQL en settings.py:
 
-### 2. Instalar dependencias
-
-Si no contás con `requirements.txt`, instalá manualmente:
-
-```bash
-pip install django djangorestframework psycopg2-binary pandas matplotlib seaborn
-```
-
----
-
-## 🛠️ Configuración de Base de Datos
-
-### Crear base de datos y usuario
-
-Ejecutar en pgAdmin o consola:
-
-```sql
-CREATE DATABASE biblioteca;
-CREATE USER biblioteca_user WITH PASSWORD 'biblioteca_pass';
-GRANT ALL PRIVILEGES ON DATABASE biblioteca TO biblioteca_user;
-```
-
-### Configurar Django
-
-Editar `biblioteca/settings.py`:
-
-```python
+python
+Copiar
+Editar
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'biblioteca',
+        'NAME': 'libreria_db',
         'USER': 'postgres',
-        'PASSWORD': '123456789',
+        'PASSWORD': 'tu_password',
         'HOST': 'localhost',
         'PORT': '5432',
     }
 }
-```
-
-### Aplicar migraciones
-
-```bash
-python manage.py makemigrations
-python manage.py migrate
-```
-
----
-
-## 📚 Funcionalidades del Proyecto
-
-✅ Registrar y gestionar:
-- Libros
-- Autores
-- Géneros
-- Calificaciones de usuarios
-
-✅ Consultar listados y detalles
-
-✅ Generar reportes gráficos con datos reales de la base
-
-✅ Recomendaciones de libros por género según promedio de calificaciones
-
----
-
-## 🔐 Pruebas en Postman
-
-### Registro de usuario
-
-- Endpoint: `POST /api/registro/`
-- Body (JSON):
-
-```json
-{
-  "username": "arturoaquino",
-  "email": "arturoaquino@gmail.com",
-  "password": "123456789"
-}
-
-```
-![image](https://github.com/user-attachments/assets/8d7079f6-9418-448a-8c80-1d5bf409f92f)
-
----
-
-### Login
-
-- Endpoint: `POST /api/login/`
-- Body (JSON):
-
-```json
-{
-  "username": "arturoaquino",
-  "password": "123456789"
-}
-```
-
-![image](https://github.com/user-attachments/assets/e7bb5d6d-4b02-41e4-bb10-cd01ae47c51d)
-
-
-✅ Obtendrás tokens JWT. Usá el **access token** para autenticación en endpoints protegidos:
-
-```
-Authorization: Bearer <access_token>
-```
-
----
-
-### Crear género
-
-- Endpoint: `POST /api/generos/`
-
-Body:
-
-```json
-{
-  "nombre": "Aventura"
-}
-```
-
-![image](https://github.com/user-attachments/assets/c67a4134-b768-4257-b4c0-ca521d9f13ca)
-
-
----
-
-### Crear autor
-
-- Endpoint: `POST /api/autores/`
-
-Body:
-
-```json
-{
-  "nombre": "Gabriel García Márquez",
-  "nacionalidad": "Colombiana"
-}
-```
-![image](https://github.com/user-attachments/assets/bd50854e-7b35-41e4-87bd-313676dff3f1)
-
----
-
-### Crear libro
-
-- Endpoint: `POST /api/libros/`
-
-Body:
-
-```json
-{
-  "titulo": "Cien años de soledad",
-  "autor": 1,
-  "genero": 1,
-  "fecha_publicacion": "1967-05-30",
-  "isbn": "1234567890",
-  "url": "http://ejemplo.com/libro"
-}
-```
-![image](https://github.com/user-attachments/assets/9663c16a-f65a-4d15-a3df-821ac1532998)
-
-
----
-
-### Listar todos los libros
-
-- Endpoint: `GET /api/libros/`
-
----
-
-![image](https://github.com/user-attachments/assets/dccd90d3-3a48-4266-9571-69f52afef575)
-
-
-## 📈 Generación de Reportes
-
-### Script
-
-```bash
-python manage.py generar_reportes
-```
-
-Genera automáticamente 10 gráficos en PNG, guardados en la carpeta `reporte_graficos`.
-
-**Algunos reportes:**
-- Libros por género
-- Libros por autor
-- Promedios de calificación
-- Histograma de calificaciones
-- Promedio de calificación por usuario
-
----
-
-## 💡 Recomendaciones por Género
-
-Ejecutá:
-
-```bash
-python manage.py recomendar_por_genero Programación
-```
-
-✅ El sistema devuelve los libros mejor calificados en ese género.
-
-**Búsqueda flexible:**  
-- No distingue mayúsculas/minúsculas.
-- No requiere tildes (acentos).
-
-Ejemplo:
-
-```bash
-python manage.py recomendar_por_genero Programación
-python manage.py recomendar_por_genero programacion
-python manage.py recomendar_por_genero PROGRAMACION
-```
-
----
-
-## 📄 Licencias
-
-Listado de paquetes utilizados:
-
-```
-asgiref                       3.8.1
-contourpy                     1.3.2
-cycler                        0.12.1
-Django                        5.2.4
-djangorestframework           3.16.0
-djangorestframework_simplejwt 5.5.0
-fonttools                     4.58.4
-Jinja2                        3.1.6
-kiwisolver                    1.4.8
-license                       0.1a3
-MarkupSafe                    3.0.2
-matplotlib                    3.10.3
-numpy                         2.3.1
-packaging                     25.0
-pandas                        2.3.0
-pillow                        11.3.0
-pip                           24.3.1
-psycopg2-binary               2.9.10
-PyJWT                         2.9.0
-pyparsing                     3.2.3
-python-dateutil               2.9.0.post0
-pytz                          2025.2
-seaborn                       0.13.2
-six                           1.17.0
-sqlparse                      0.5.3
-tzdata                        2025.2
-Unidecode                     1.4.0
-```
-
----
-
-© Proyecto educativo desarrollado para fines de aprendizaje y evaluación. Licencia MIT.
+📖 Explicación del programa
+El sistema permite:
+
+✅ Registrar libros (título, autor, género, año, calificación)
+✅ Consultar libros registrados
+✅ Obtener sugerencias basadas en género y calificaciones promedio
+✅ Generar gráficos para análisis exploratorio de datos
+
+La arquitectura se basa en un modelo Django Book, vistas para manejo CRUD y scripts de análisis de datos en Python.
+
+✍️ Código de Registro
+Modelo Book
+python
+Copiar
+Editar
+from django.db import models
+
+class Book(models.Model):
+    title = models.CharField(max_length=255)
+    author = models.CharField(max_length=255)
+    genre = models.CharField(max_length=100)
+    year = models.IntegerField()
+    rating = models.FloatField()
+
+    def __str__(self):
+        return self.title
+✅ Crear Autor
+Modelo Author
+python
+Copiar
+Editar
+from django.db import models
+
+class Author(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+Vista para registrar autor
+python
+Copiar
+Editar
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
+from .models import Author
+
+@csrf_exempt
+def add_author(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        author = Author.objects.create(name=data['name'])
+        return JsonResponse({'message': 'Autor creado', 'id': author.id})
+Ejemplo de petición Postman:
+
+![image](https://github.com/user-attachments/assets/7ba07caa-2dc1-44bd-a1e2-07665aa1816c)
+
+✅ Crear Género
+Modelo Genre
+python
+Copiar
+Editar
+from django.db import models
+
+class Genre(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+Vista para registrar género
+python
+Copiar
+Editar
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
+from .models import Genre
+
+@csrf_exempt
+def add_genre(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        genre = Genre.objects.create(name=data['name'])
+        return JsonResponse({'message': 'Género creado', 'id': genre.id})
+Ejemplo de petición Postman:
+
+![image](https://github.com/user-attachments/assets/f7b2e182-1cc1-4479-8856-838539921384)
+
+
+✅ Registrar Libro
+Vista para registrar libro
+python
+Copiar
+Editar
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
+from .models import Book
+
+@csrf_exempt
+def add_book(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        book = Book.objects.create(
+            title=data['title'],
+            author=data['author'],
+            genre=data['genre'],
+            year=data['year'],
+            rating=data['rating']
+        )
+        return JsonResponse({'message': 'Libro creado', 'id': book.id})
+Ejemplo Postman:
+
+![image](https://github.com/user-attachments/assets/5932ba8c-1e60-4c55-8d70-33fdfc8e1266)
+
+
+✅ Listado de Libros
+Endpoint para obtener listado
+python
+Copiar
+Editar
+from django.http import JsonResponse
+from .models import Book
+
+def list_books(request):
+    books = Book.objects.all().values()
+    return JsonResponse(list(books), safe=False)
+
+![image](https://github.com/user-attachments/assets/aef1ac14-2543-48af-a278-be56b27db4d7)
+
+✅ Valorar Libro
+Vista para actualizar calificación
+python
+Copiar
+Editar
+from django.views.decorators.csrf import csrf_exempt
+import json
+from django.http import JsonResponse
+from .models import Book
+
+@csrf_exempt
+def rate_book(request, book_id):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        book = Book.objects.get(id=book_id)
+        book.rating = data['rating']
+        book.save()
+        return JsonResponse({'message': 'Calificación actualizada', 'rating': book.rating})
+
+![image](https://github.com/user-attachments/assets/644594f3-e433-4b4a-8529-e31002b63ee4)
+
+    
+📝 Documentación Script
+Para leer registros y generar análisis, se utiliza un script Python con Pandas. Ejemplo de lectura:
+
+python
+Copiar
+Editar
+import pandas as pd
+
+# Conexión a PostgreSQL
+import psycopg2
+
+conn = psycopg2.connect(
+    dbname='libreria_db',
+    user='postgres',
+    password='tu_password',
+    host='localhost',
+    port='5432'
+)
+
+query = "SELECT * FROM libros_book;"
+df = pd.read_sql(query, conn)
+
+print(df.head())
+📊 Generar y Explicar Gráficos
+Para visualizar los datos se crearon gráficos en Google Colab o Google Drive utilizando Python, Pandas, Seaborn y Matplotlib.
+
+Ejemplo de preguntas y gráficos
+¿Cómo se distribuyen las calificaciones?
+![image](https://github.com/user-attachments/assets/46ac5f8a-1f7f-4991-bd98-247d0052054f)
+
+¿Cuál es el promedio de calificación por usuario?
+![image](https://github.com/user-attachments/assets/72d3c8d3-1b3e-4fc7-8495-9b835697bb59)
+
+¿Cuántos libros hay por género?
+![image](https://github.com/user-attachments/assets/b7ad53f5-7a02-4860-805e-c15d11abfcf8)
+
+¿Qué autores tienen más libros?
+![image](https://github.com/user-attachments/assets/ac54fee6-4cea-4e8e-ab5f-ee2c05a32266)
+
+¿Qué libros tienen mejor promedio de calificación?
+![image](https://github.com/user-attachments/assets/1f71571c-52b6-4f1e-8017-1071c0a3bac2)
+
+¿Cuál es la valoración media por género?
+![image](https://github.com/user-attachments/assets/887b850b-bc85-4d78-afad-58d74ecf8762)
+
+¿Cuáles son los libros más calificados?
+![image](https://github.com/user-attachments/assets/8dfc5e73-714b-4e73-b5da-731fb1c34cb7)
+
+¿Cuáles son los autores con más calificaciones?
+![image](https://github.com/user-attachments/assets/366fe945-7413-425a-8870-054ca8244add)
+
+¿Cómo han evolucionado las publicaciones por año?
+![image](https://github.com/user-attachments/assets/116e7644-5da6-4258-9aaf-96b4e9521fe9)
+
+
+⚖️ Licencias
+✅ Python: PSF License
+✅ Django: BSD License
+✅ PostgreSQL: PostgreSQL License
+✅ Pandas: BSD License
+✅ Matplotlib: PSF-based License
+✅ Seaborn: BSD License
+✅ Scikit-learn: BSD License
+
+Este proyecto se distribuye bajo la licencia MIT. Ver archivo LICENSE para más detalles.
