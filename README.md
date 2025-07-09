@@ -222,26 +222,25 @@ Ejemplo de preguntas y gráficos
 
 ![image](https://github.com/user-attachments/assets/116e7644-5da6-4258-9aaf-96b4e9521fe9)
 
-Recomendaciones por Género
-
-Funcion:
+# Recomendaciones por Género
 
 Este comando de consola genera recomendaciones de libros basadas en el género literario que se indique. Devuelve una lista de los títulos mejor calificados dentro de ese género, ordenados por su promedio de calificaciones.
 
-Ejemplo de uso
+# Ejemplo de uso
 
 ```python
 python manage.py recomendar_por_genero aventura
 ```
 
-Resultado esperado:
+# Resultado esperado:
 
 ![image](https://github.com/user-attachments/assets/ae664586-b819-4643-9fcd-9a357b410b95)
 
-Si no se encuentra el género, se muestra un mensaje de error:
+# Si no se encuentra el género, se muestra un mensaje de error:
 
 ❌ Género 'fantasia epica' no encontrado.
-Y si el género existe, pero no hay libros con calificaciones:
+
+# Y si el género existe, pero no hay libros con calificaciones:
 
 ⚠️ No se encontraron libros en el género 'Poesía' o no tienen calificaciones.
 
