@@ -51,7 +51,7 @@ La arquitectura se basa en un modelo Django Book, vistas para manejo CRUD y scri
 
 La arquitectura se basa en un modelo Django Book, vistas para manejo CRUD y scripts de análisis de datos en Python.
 
-✅ Crear Autor
+✅ **Crear Autor**
 ```python
 from django.db import models
 
@@ -78,7 +78,7 @@ Ejemplo de petición Postman:
 
 ![image](https://github.com/user-attachments/assets/7ba07caa-2dc1-44bd-a1e2-07665aa1816c)
 
-✅ Crear Género
+✅ **Crear Género**
 ```python
 from django.db import models
 
@@ -105,7 +105,7 @@ Ejemplo de petición Postman:
 
 ![image](https://github.com/user-attachments/assets/f7b2e182-1cc1-4479-8856-838539921384)
 
-✅ Registrar Libro
+✅ **Registrar Libro**
 ```python
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -129,7 +129,7 @@ Ejemplo Postman:
 
 ![image](https://github.com/user-attachments/assets/5932ba8c-1e60-4c55-8d70-33fdfc8e1266)
 
-✅ Listado de Libros
+✅ **Listado de Libros**
 Endpoint para obtener listado
 ```python
 from django.http import JsonResponse
@@ -141,7 +141,7 @@ def list_books(request):
 ```
 ![image](https://github.com/user-attachments/assets/aef1ac14-2543-48af-a278-be56b27db4d7)
 
-✅ Valorar Libro
+✅ **Valorar Libro**
 Vista para actualizar calificación
 ```python
 from django.views.decorators.csrf import csrf_exempt
@@ -186,39 +186,39 @@ Para visualizar los datos se crearon gráficos en Google Colab o Google Drive ut
 
 # Ejemplo de preguntas y gráficos
 
-# ¿Cómo se distribuyen las calificaciones?
+**¿Cómo se distribuyen las calificaciones?**
 
 ![image](https://github.com/user-attachments/assets/46ac5f8a-1f7f-4991-bd98-247d0052054f)
 
-# ¿Cuál es el promedio de calificación por usuario?
+**¿Cuál es el promedio de calificación por usuario?**
 
 ![image](https://github.com/user-attachments/assets/72d3c8d3-1b3e-4fc7-8495-9b835697bb59)
 
-# ¿Cuántos libros hay por género?
+**¿Cuántos libros hay por género?**
 
 ![image](https://github.com/user-attachments/assets/f322c526-60ff-4116-8e03-f4709e6be114)
 
-# ¿Qué autores tienen más libros?
+**¿Qué autores tienen más libros?**
 
 ![image](https://github.com/user-attachments/assets/ac54fee6-4cea-4e8e-ab5f-ee2c05a32266)
 
-# ¿Qué libros tienen mejor promedio de calificación?
+**¿Qué libros tienen mejor promedio de calificación?**
 
 ![image](https://github.com/user-attachments/assets/1f71571c-52b6-4f1e-8017-1071c0a3bac2)
 
-# ¿Cuál es la valoración media por género?
+**¿Cuál es la valoración media por género?**
 
 ![image](https://github.com/user-attachments/assets/887b850b-bc85-4d78-afad-58d74ecf8762)
 
-# ¿Cuáles son los libros más calificados?
+**¿Cuáles son los libros más calificados?**
 
 ![image](https://github.com/user-attachments/assets/8dfc5e73-714b-4e73-b5da-731fb1c34cb7)
 
-# ¿Cuáles son los autores con más calificaciones?
+**¿Cuáles son los autores con más calificaciones?**
 
 ![image](https://github.com/user-attachments/assets/366fe945-7413-425a-8870-054ca8244add)
 
-# ¿Cómo han evolucionado las publicaciones por año?
+**¿Cómo han evolucionado las publicaciones por año?**
 
 ![image](https://github.com/user-attachments/assets/116e7644-5da6-4258-9aaf-96b4e9521fe9)
 
@@ -226,21 +226,21 @@ Para visualizar los datos se crearon gráficos en Google Colab o Google Drive ut
 
 Este comando de consola genera recomendaciones de libros basadas en el género literario que se indique. Devuelve una lista de los títulos mejor calificados dentro de ese género, ordenados por su promedio de calificaciones.
 
-# Ejemplo de uso
+**Ejemplo de uso**
 
 ```python
 python manage.py recomendar_por_genero aventura
 ```
 
-# Resultado esperado:
+**Resultado esperado:**
 
 ![image](https://github.com/user-attachments/assets/ae664586-b819-4643-9fcd-9a357b410b95)
 
-# Si no se encuentra el género, se muestra un mensaje de error:
+**Si no se encuentra el género, se muestra un mensaje de error:**
 
 ❌ Género 'fantasia epica' no encontrado.
 
-# Y si el género existe, pero no hay libros con calificaciones:
+**Y si el género existe, pero no hay libros con calificaciones:**
 
 ⚠️ No se encontraron libros en el género 'Poesía' o no tienen calificaciones.
 
