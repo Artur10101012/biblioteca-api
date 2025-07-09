@@ -1,7 +1,4 @@
 📚 Proyecto Sistema de Registro y Valoración de Libros
-```python
-Este proyecto es una aplicación desarrollada con Django y Python para gestionar el registro de libros, calificaciones y análisis de datos mediante visualizaciones gráficas. Incluye carga de datos, consultas, sugerencias de libros y generación de gráficos para análisis exploratorio.
-```
 
 ✅ Versiones de las herramientas
 ```python
@@ -33,6 +30,7 @@ cd libreria
 python manage.py startapp libros
 Configura la base de datos PostgreSQL en settings.py:
 
+```SQL
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -43,6 +41,7 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+```
 📖 Explicación del programa
 El sistema permite:
 
