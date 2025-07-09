@@ -1,6 +1,7 @@
-📚 Proyecto Sistema de Registro y Valoración de Libros
+# 📚 Proyecto Sistema de Registro y Valoración de Libros
 
-✅ Versiones de las herramientas
+✅ **Versiones de las herramientas**
+
 ```python
 Python: 3.10+
 Django: 4.2+
@@ -10,10 +11,8 @@ Matplotlib: 3.6+
 Seaborn: 0.12+
 Scikit-learn: 1.2+
 Virtualenv: 20+
-```
 
 ⚙️ Instalaciones y Configuración
-Creación del entorno virtual
 # Crear entorno virtual
 python -m venv venv
 
@@ -22,14 +21,9 @@ venv\Scripts\activate
 
 # Activar entorno (Linux/macOS)
 source venv/bin/activate
-Instalación de Django y librerías
-pip install django pandas matplotlib seaborn scikit-learn psycopg2-binary
-Crear proyecto Django
-django-admin startproject libreria
-cd libreria
-python manage.py startapp libros
-Configura la base de datos PostgreSQL en settings.py:
 
+
+# Configura la base de datos PostgreSQL en settings.py:
 ```SQL
 DATABASES = {
     'default': {
@@ -49,6 +43,8 @@ El sistema permite:
 ✅ Consultar libros registrados
 ✅ Obtener sugerencias basadas en género y calificaciones promedio
 ✅ Generar gráficos para análisis exploratorio de datos
+
+La arquitectura se basa en un modelo Django Book, vistas para manejo CRUD y scripts de análisis de datos en Python.
 
 La arquitectura se basa en un modelo Django Book, vistas para manejo CRUD y scripts de análisis de datos en Python.
 
