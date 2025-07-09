@@ -184,41 +184,41 @@ print(df.head())
 📊 Generar y Explicar Gráficos
 Para visualizar los datos se crearon gráficos en Google Colab o Google Drive utilizando Python, Pandas, Seaborn y Matplotlib.
 
-Ejemplo de preguntas y gráficos
+# Ejemplo de preguntas y gráficos
 
-¿Cómo se distribuyen las calificaciones?
+# ¿Cómo se distribuyen las calificaciones?
 
 ![image](https://github.com/user-attachments/assets/46ac5f8a-1f7f-4991-bd98-247d0052054f)
 
-¿Cuál es el promedio de calificación por usuario?
+# ¿Cuál es el promedio de calificación por usuario?
 
 ![image](https://github.com/user-attachments/assets/72d3c8d3-1b3e-4fc7-8495-9b835697bb59)
 
-¿Cuántos libros hay por género?
+# ¿Cuántos libros hay por género?
 
 ![image](https://github.com/user-attachments/assets/f322c526-60ff-4116-8e03-f4709e6be114)
 
-¿Qué autores tienen más libros?
+# ¿Qué autores tienen más libros?
 
 ![image](https://github.com/user-attachments/assets/ac54fee6-4cea-4e8e-ab5f-ee2c05a32266)
 
-¿Qué libros tienen mejor promedio de calificación?
+# ¿Qué libros tienen mejor promedio de calificación?
 
 ![image](https://github.com/user-attachments/assets/1f71571c-52b6-4f1e-8017-1071c0a3bac2)
 
-¿Cuál es la valoración media por género?
+# ¿Cuál es la valoración media por género?
 
 ![image](https://github.com/user-attachments/assets/887b850b-bc85-4d78-afad-58d74ecf8762)
 
-¿Cuáles son los libros más calificados?
+# ¿Cuáles son los libros más calificados?
 
 ![image](https://github.com/user-attachments/assets/8dfc5e73-714b-4e73-b5da-731fb1c34cb7)
 
-¿Cuáles son los autores con más calificaciones?
+# ¿Cuáles son los autores con más calificaciones?
 
 ![image](https://github.com/user-attachments/assets/366fe945-7413-425a-8870-054ca8244add)
 
-¿Cómo han evolucionado las publicaciones por año?
+# ¿Cómo han evolucionado las publicaciones por año?
 
 ![image](https://github.com/user-attachments/assets/116e7644-5da6-4258-9aaf-96b4e9521fe9)
 
@@ -244,7 +244,7 @@ python manage.py recomendar_por_genero aventura
 
 ⚠️ No se encontraron libros en el género 'Poesía' o no tienen calificaciones.
 
-⚖️ Licencias
+# ⚖️ Licencias
 
 ✅ Python: PSF License
 
